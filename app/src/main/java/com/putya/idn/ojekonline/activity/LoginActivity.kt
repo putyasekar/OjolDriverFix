@@ -16,6 +16,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.putya.idn.ojekonline.MainActivity
 import com.putya.idn.ojekonline.R
+import com.putya.idn.ojekonline.model.Users
 import com.putya.idn.ojekonline.utils.Constan
 import org.jetbrains.anko.startActivity
 
@@ -92,7 +93,20 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
-    private fun insertUser(it: String, it1: String, s: String, uid: String?): Any {
+    private fun insertUser(name: String, email: String, hp: String, idUser: String?): Boolean {
+        val user = Users()
+        user.email = email
+        user.name = name
+        user.hp = hp
+        user.uid = auth?.uid
 
+        val database = FirebaseDatabase.getInstance()
+        val key = database.reference.push().key
+        val myRef = database.getReference(Constan.tb_user)
+
+        myRef.child(key ?: "").setValue(user)
+
+        startActivity<AutentikasiNomorTelefonActivity>(Constan.key to key)
+        return true
     }
 }
