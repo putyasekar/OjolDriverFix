@@ -3,6 +3,7 @@ package com.putya.idn.ojekonline.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -18,7 +19,11 @@ import com.putya.idn.ojekonline.MainActivity
 import com.putya.idn.ojekonline.R
 import com.putya.idn.ojekonline.model.Users
 import com.putya.idn.ojekonline.utils.Constan
+import kotlinx.android.synthetic.main.activity_login.*
+import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.startActivity
+import org.jetbrains.anko.toast
+import kotlin.math.sign
 
 class LoginActivity : AppCompatActivity() {
     var googleSignInClient: GoogleSignInClient? = null
@@ -27,6 +32,38 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        signUpButtonGmail.onClick {
+            signIn()
+        }
+        signUpLink.onClick {
+            startActivity<SignUpActivity>()
+        }
+        loginButton.onClick {
+            if (loginEmail.text.isNotEmpty() &&
+                loginPassword.text.isNotEmpty()
+            ) {
+                authUserSignIn(
+                    loginEmail.text.toString(),
+                    loginPassword.text.toString()
+                )
+            }
+        }
+    }
+
+    private fun authUserSignIn(email: String, pass: String) {
+        var status: Boolean? = null
+
+        auth?.signInWithEmailAndPassword(email, pass)
+            ?.addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    startActivity<MainActivity>()
+                    finish()
+                } else {
+                    toast("Login Failed")
+                    Log.e("Error", "Message")
+                }
+            }
     }
 
     private fun signIn() {
