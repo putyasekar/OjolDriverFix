@@ -5,7 +5,10 @@ import android.os.Bundle
 import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.FirebaseDatabase
 import com.putya.idn.ojekonline.R
+import com.putya.idn.ojekonline.model.Users
+import com.putya.idn.ojekonline.utils.Constan
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import org.jetbrains.anko.startActivity
 
@@ -48,8 +51,20 @@ class SignUpActivity : AppCompatActivity() {
         name: String,
         email: String,
         hp: String,
-        user: FirebaseUser
+        users: FirebaseUser
     ): Boolean {
-        var
+        var user = Users()
+        user.uid = users.uid
+        user.name = name
+        user.email = email
+        user.hp = hp
+
+        val database = FirebaseDatabase.getInstance()
+        var key = database.reference.push().key
+        val myRef = database.getReference(Constan.tb_user)
+
+        myRef.child(key!!).setValue(user)
+
+        return true
     }
 }
