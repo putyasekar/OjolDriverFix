@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1077905618802",
+    "firebase_url": "https://ojekonline-d4bbd.firebaseio.com",
+    "project_id": "ojekonline-d4bbd",
+    "storage_bucket": "ojekonline-d4bbd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1077905618802:android:d78d4ec4993617da6d4feb",
+        "android_client_info": {
+          "package_name": "com.putya.idn.ojekonline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1077905618802-8nfrqp8a9ftmphhgfk957uko056tat6n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqq6Dq9h1EYte7iwclyAaxuDmhFAcc0jo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1077905618802-8nfrqp8a9ftmphhgfk957uko056tat6n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

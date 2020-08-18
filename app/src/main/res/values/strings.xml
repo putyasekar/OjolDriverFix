@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">OjekOnline</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="didn_t_have_account_make_an_account_or_sign_up">Didn\'t have account? Make an account or Sign Up</string>
+    <string name="or">OR</string>
+    <string name="sign_up_google">Sign Up with Google</string>
+    <string name="name">Name</string>
+    <string name="hp">No. Telp</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_up">Sign Up</string>
+</resources>
