@@ -10,7 +10,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.putya.idn.ojekonline.MainActivity
 import com.putya.idn.ojekonline.R
+import com.putya.idn.ojekonline.utils.Constan
+import org.jetbrains.anko.startActivity
 
 class LoginActivity : AppCompatActivity() {
     var googleSignInClient: GoogleSignInClient? = null
@@ -62,6 +69,30 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun checkDatabase(uid: String?, account: GoogleSignInAccount?) {
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference(Constan.tb_user)
+        val query = myRef.orderByChild("uid").equalTo(auth?.uid)
+
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+            override fun onDataChange(p0: DataSnapshot) {
+                if (p0.exists()) {
+                    startActivity<MainActivity>()
+                } else {
+                    account?.displayName?.let {
+                        account.email?.let { it1 ->
+                            insertUser(it, it1, "", uid)
+                        }
+                    }
+                }
+            }
+        })
+    }
+
+    private fun insertUser(it: String, it1: String, s: String, uid: String?): Any {
 
     }
 }
