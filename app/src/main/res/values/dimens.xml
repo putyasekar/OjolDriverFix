@@ -10,4 +10,5 @@
     <dimen name="_20dp">20dp</dimen>
     <dimen name="_20sp">20sp</dimen>
     <dimen name="_40dp">40dp</dimen>
+    <dimen name="_100dp">100dp</dimen>
 </resources>

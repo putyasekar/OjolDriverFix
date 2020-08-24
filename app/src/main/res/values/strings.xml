@@ -13,4 +13,6 @@
     <string name="hp">No. Telp</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="sign_up">Sign Up</string>
+    <string name="inputkan_nomor_hp">Inputkan Nomor Hp</string>
+    <string name="submit">submit</string>
 </resources>
