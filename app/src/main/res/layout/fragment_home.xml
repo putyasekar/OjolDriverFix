@@ -48,7 +48,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_05"
+                android:layout_height="@dimen/_1dp"
                 android:layout_marginLeft="@dimen/_40dp"
                 android:layout_marginRight="@dimen/_20dp"
                 android:background="@android:color/darker_gray" />
@@ -118,7 +118,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_05"
+                android:layout_height="@dimen/_1dp"
                 android:layout_marginTop="@dimen/_10dp"
                 android:background="@android:color/darker_gray" />
 

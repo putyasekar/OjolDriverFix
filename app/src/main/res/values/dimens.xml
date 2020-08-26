@@ -16,5 +16,6 @@
     <dimen name="_60dp">60dp</dimen>
     <dimen name="_15sp">15sp</dimen>
     <dimen name="_25dp">25dp</dimen>
+    <dimen name="_1dp">1dp</dimen>
     <item name="_05" type="dimen" format="float">0.5</item>
 </resources>

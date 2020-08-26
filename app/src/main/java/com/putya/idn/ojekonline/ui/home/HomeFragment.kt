@@ -4,28 +4,44 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.model.LatLng
 import com.putya.idn.ojekonline.R
+import kotlinx.android.synthetic.main.activity_maps.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment : Fragment() {
-
-    private lateinit var homeViewModel: HomeViewModel
+class HomeFragment : Fragment(), OnMapReadyCallback {
+    private var map: GoogleMap? = null
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
-        })
-        return root
+        return inflater.inflate(
+            R.layout.fragment_home, container, false
+        )
+    }
+
+    //showing maps to fragment
+    override fun onMapReady(p0: GoogleMap?) {
+        map = p0
+        map?.uiSettings?.isMyLocationButtonEnabled = false
+        map?.moveCamera(
+            CameraUpdateFactory.newLatLngZoom(
+                LatLng(-6.3088652, 106.682188), 12f
+            )
+        )
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        //initialisation from map view
+        mapView.onCreate(savedInstanceState)
+        mapView.getMapAsync { this }
     }
 }
