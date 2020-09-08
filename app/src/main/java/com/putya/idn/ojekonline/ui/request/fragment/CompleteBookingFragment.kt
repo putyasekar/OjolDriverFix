@@ -21,7 +21,7 @@ import java.lang.IllegalStateException
 
 class CompleteBookingFragment : Fragment() {
     private var columnnClout = 1
-    private var listener: RequestBookingFragment.OnListFragmentInteractionListener? = null
+    private var listener: OnListFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
