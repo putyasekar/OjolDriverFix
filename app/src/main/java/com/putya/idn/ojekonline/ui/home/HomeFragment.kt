@@ -60,7 +60,7 @@ import retrofit2.Response
 import java.util.*
 
 class HomeFragment : Fragment(), OnMapReadyCallback {
-    private var map: GoogleMap? = null
+    var map: GoogleMap? = null
     var tanggal: String? = null
     var latAwal: Double? = null
     var longAwal: Double? = null
@@ -100,7 +100,7 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
 
         //initialisation from map view
         mapView.onCreate(savedInstanceState)
-        mapView.getMapAsync { this }
+        mapView.getMapAsync(this)
 
         showPermission()
         visibleView(false)
@@ -115,8 +115,8 @@ class HomeFragment : Fragment(), OnMapReadyCallback {
             takeLocation(2)
         }
 
-        home_bottom_next?.onClick {
-            if (home_awal?.text?.isNotEmpty()!!
+        home_bottom_next.onClick {
+            if (home_awal.text.isNotEmpty()
                 && home_tujuan.text.isNotEmpty()
             ) {
                 insertServer()

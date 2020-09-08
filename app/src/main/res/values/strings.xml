@@ -36,4 +36,7 @@
     <string name="title_activity_maps">Map</string>
     <string name="nama_driver">Nama Driver</string>
     <string name="tunggu_driver_kamu_pick_up_ya">Tunggu driver kamu pick up ya!</string>
+    <string name="request">request</string>
+    <string name="handle">Handle</string>
+    <string name="complete">Complete</string>
 </resources>

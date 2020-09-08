@@ -15,6 +15,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.iid.FirebaseInstanceId
 import com.putya.idn.ojekonline.MainActivity
 import com.putya.idn.ojekonline.R
 import com.putya.idn.ojekonline.model.Users
@@ -135,12 +136,18 @@ class LoginActivity : AppCompatActivity() {
         })
     }
 
-    private fun insertUser(name: String, email: String, hp: String, idUser: String?): Boolean {
+    private fun insertUser(name: String, email: String, hp: String, uid: String?): Boolean {
+
+        val token =FirebaseInstanceId.getInstance().token
+
         val user = Users()
         user.email = email
         user.name = name
         user.hp = hp
-        user.uid = auth?.uid
+        user.uid = uid
+        user.latitude = "0.0"
+        user.longitude = "0.0"
+        user.token = token
 
         val database = FirebaseDatabase.getInstance()
         val key = database.reference.push().key
