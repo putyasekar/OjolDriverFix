@@ -5,15 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.putya.idn.ojekonline.R
 import com.putya.idn.ojekonline.model.Booking
+import com.putya.idn.ojekonline.ui.request.adapter.BookingAdapter
+import com.putya.idn.ojekonline.ui.request.detail.DetailRequest
 import com.putya.idn.ojekonline.utils.Constan
+import kotlinx.android.synthetic.main.fragment_item_list.*
+import org.jetbrains.anko.support.v4.startActivity
+import java.lang.IllegalStateException
 
 class RequestBookingFragment : Fragment() {
+    private var columnnClout = 1
+    private var listener: RequestBookingFragment.OnListFragmentInteractionListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -62,7 +70,29 @@ class RequestBookingFragment : Fragment() {
         })
     }
 
-    private fun showData(data: java.util.ArrayList<Booking>) {
+    private fun showData(data: ArrayList<Booking>) {
+        try {
+            list.adapter = BookingAdapter(data, object : OnListFragmentInteractionListener {
 
+                override fun onListFragmentInteraction(item: Booking?) {
+                    startActivity<DetailRequest>(
+                        Constan.booking to item!!,
+                        Constan.status to 1
+                    )
+                }
+            })
+            list.layoutManager = LinearLayoutManager(context)
+        } catch (e: IllegalStateException) {
+
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        listener = null
+    }
+
+    interface OnListFragmentInteractionListener {
+        fun onListFragmentInteraction(item: Booking?)
     }
 }

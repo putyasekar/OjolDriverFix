@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.putya.idn.ojekonline">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -19,9 +18,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".ui.request.detail.DetailRequest"></activity>
+
         <service
             android:name=".TrackingService"
-            android:enabled="true"/>
+            android:enabled="true" />
 
         <activity android:name=".activity.WaitingDriverActivity" />
         <!--

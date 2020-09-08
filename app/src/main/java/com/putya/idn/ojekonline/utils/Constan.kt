@@ -6,5 +6,7 @@ object Constan {
     val baseUrlRoute = "https://maps.googleapis.com/maps/api/directions/"
     val baseUrlFcm = "https://fcm.googleapis.com"
     val key = "Key"
-    val API_KEY = "AIzaSyCPy5d7fVtJN9U0cUM2Cj9i5_DNWG-9WtQ"
+    val booking = "booking"
+    val status = "status"
+   // val API_KEY = "AIzaSyCPy5d7fVtJN9U0cUM2Cj9i5_DNWG-9WtQ"
 }
