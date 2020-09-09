@@ -1,4 +1,4 @@
-package com.putya.idn.ojekonline
+package com.putya.idn.ojekonline.service
 
 import android.Manifest
 import android.app.Service
